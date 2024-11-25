@@ -1,0 +1,33 @@
+<!-- <head>
+    <title>All Rides</title>
+    <link rel="stylesheet" type="text/css" href="./../static/display_rides.css">
+</head> -->
+{% extends 'main_page.html' %}
+{% block content %}
+<body>
+    <link rel="stylesheet" type="text/css" href="./../static/display_rides.css">
+    <table class="ride-table">
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Seats Available</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ride in rides %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ ride.origin }}</td>
+                    <td>{{ ride.destination }}</td>
+                    <td>{{ ride.seats_avail }}</td>
+                    <td>
+                        <button><a href="{% url 'details' ride.id %}">View Details</a></button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+{% endblock %}
